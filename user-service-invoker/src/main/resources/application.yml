@@ -1,0 +1,43 @@
+server:
+  port: 8701
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${SCAD_USI_NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${SCAD_USI_NACOS_NS:3f21b39c-8476-4520-ac89-3ea4c0e1f47b}
+  application:
+    name: user-service-invoker
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  config: classpath:logback-springboot.xml
+
+print-server-address:
+  ignore-parent-context: true
+
+info:
+  app: ${spring.application.name}
+
+# https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/#spring-cloud-feign-overriding-defaults
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: basic
+      user-service-provider:
+        loggerLevel: full
+        connectTimeout: 2000
+        readTimeout: 5000
+      randomOrgApiClient:
+        loggerLevel: full
+        connectTimeout: 2000
+        readTimeout: 5000
+        defaultRequestHeaders:
+          User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0
