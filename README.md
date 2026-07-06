@@ -100,12 +100,6 @@ GET /gateway/health
 
 新增 `GatewayHealthController`，在网关模块提供 `/gateway/health` 接口，用于查看网关服务状态和注册服务列表。
 
-## 适合简历描述
-
-- 基于 Spring Cloud Alibaba 搭建微服务示例系统，使用 Nacos、OpenFeign、Gateway、Sentinel 实现服务注册、远程调用、统一网关和限流验证。
-- 为网关模块新增健康检查接口，返回服务状态和注册服务列表，便于部署验证和问题排查。
-- 通过 curl 和 JMeter 等工具验证服务调用、网关路由和限流效果。
-
 ## 编译说明
 
 如果在较新 JDK 上遇到 Lombok 与 `javac` 模块权限相关的编译问题，建议使用 JDK 8/11，或升级项目中的 Lombok 版本后再编译。
